@@ -25,6 +25,7 @@ function generate_ca_if_not_exists() {
 
   if [ ! -f "ca.crt" ] && [ -f "ca.key" ]
   then
+    # 730 days as OS X Catalina does not support very long certificate times anymore
     openssl req -new -x509 -days 730 -key ca.key \
     -out ca.crt \
     -subj "/O=Signaler CA/OU=self-signed by onnimonni-signaler/CN=Self-Signed onnimonni-signaler Root CA"
