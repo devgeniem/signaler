@@ -2,10 +2,9 @@ FROM jwilder/docker-gen
 MAINTAINER Onni Hakala - Geniem Oy. <onni.hakala@geniem.com>
 
 # Install openssl for signing certificates
-RUN DEBIAN_FRONTEND=noninteractive \
-    apt-get update -y && \
-    apt-get upgrade -y && \
-    apt-get install -y openssl
+RUN apk update && \
+    apk upgrade && \
+    apk add openssl
 
 # Set default parameters
 ENV GENERATOR="self-signed"\
